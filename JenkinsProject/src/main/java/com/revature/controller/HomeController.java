@@ -1,4 +1,16 @@
-package java.com.revature.controller;
+package com.revature.controller;
+
+import java.util.Set;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.revature.beans.Post;
+import com.revature.services.HomeService;
 
 @Controller
 public class HomeController
@@ -6,7 +18,7 @@ public class HomeController
         @Autowired
         HomeService homeService;
 
-        @RequetMapping(value = "/home", method = RequestMethod.GET)
+        @RequestMapping(value = "/home", method = RequestMethod.GET)
         public String getHome(HttpSession session)
         {
             if (session.getAttribute("user") == null) //the user is not logged in
@@ -18,7 +30,7 @@ public class HomeController
             return "static/home.html";
         }
 
-        @RequetMapping(value = "/getPosts", method = RequestMethod.GET)
+        @RequestMapping(value = "/getPosts", method = RequestMethod.GET)
         public void getAllPosts()
         {
         	Set <Post> posts = homeService.getAllPosts();

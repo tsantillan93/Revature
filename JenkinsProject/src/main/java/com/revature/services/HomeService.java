@@ -1,4 +1,8 @@
-package java.com.revature.services;
+package com.revature.services;
+
+import java.util.Set;
+
+import com.revature.beans.Post;
 
 public interface HomeService 
 {
