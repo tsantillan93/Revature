@@ -1,9 +1,17 @@
-package java.com.revature.controller;
+package com.revature.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.revature.beans.User;
+import com.revature.services.LoginService;
+
 @Controller
-@RequestMapper(value = "/login") //maps the url
+@RequestMapping(value = "/login") //maps the url
 public class LoginController
 {
         @Autowired
@@ -15,7 +23,7 @@ public class LoginController
             if(session.getAttribute("user") == null)
             {
                 //if the login was successful, forward to the login page
-                return "static/login.html"
+                return "static/login.html";
             }
 
             //if the login was UNsuccessful, redirect to the home page/dashboard
@@ -33,12 +41,12 @@ public class LoginController
             }
 
             //the user's credentials are valid
-            return "redirect : home"
+            return "redirect : home";
         }
 
         public void setLogin(LoginService login)
         {
             //instantiate the LoginService instance
-            this.login = login;
+            this.loginService = login;
         }
 }
