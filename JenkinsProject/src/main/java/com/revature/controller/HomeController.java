@@ -16,14 +16,14 @@ import com.revature.services.HomeService;
 public class HomeController
 {
         @Autowired
-        HomeService homeService;
+        private HomeService homeService;
 
         @RequestMapping(value = "/home", method = RequestMethod.GET)
         public String getHome(HttpSession session)
         {
             if (session.getAttribute("user") == null) //the user is not logged in
             {
-                    return "redirect : login";
+                    return "redirect:login";
             }
 
             //the user is logged in, therefore, can access the homepage
