@@ -5,4 +5,6 @@ import com.revature.beans.User;
 public interface UserDAO {
 	User getUser(String username, String Password);
 
+	//Create
+	User addUser(User u);
 }
