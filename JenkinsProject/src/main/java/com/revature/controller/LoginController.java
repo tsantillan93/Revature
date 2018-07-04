@@ -15,7 +15,7 @@ import com.revature.services.LoginService;
 public class LoginController
 {
         @Autowired
-        LoginService loginService;
+        private LoginService loginService;
 
         @RequestMapping(method = RequestMethod.GET) //maps GET requests to this function
         public String getLogin(HttpSession session)
@@ -27,7 +27,7 @@ public class LoginController
             }
 
             //if the login was UNsuccessful, redirect to the home page/dashboard
-            return "redirect : home";
+            return "redirect:home";
         }
 
         @RequestMapping(method = RequestMethod.POST) //maps POST requests to this function
@@ -37,11 +37,12 @@ public class LoginController
             System.out.println("Credentials Received-\n\tUsername: " + username + "\n\tPassword: " + password);
             if (u == null) //the user has not registered
             {
-                return "redirect : login";
+                return "redirect:login";
             }
 
             //the user's credentials are valid
-            return "redirect : home";
+            session.setAttribute("user", u);
+            return "redirect:home";
         }
 
         public void setLogin(LoginService login)
