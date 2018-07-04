@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="ISO-8859-1">
+        <title>Location-Based P2 Marketplace</title>
+</head>
+<body>
+        <nav id="navbar"></nav>
+        <h1>User Login</h1>
+        <form action="login" method="post">
+                <div class="container">
+                  <label for="uname"><b>Username</b></label>
+                  <input type="text" placeholder="Enter Username" id="username" name="username"required/>
+
+                  <label for="psw"><b>Password</b></label>
+                  <input type="password" placeholder="Enter Password" id="password" name="password"required/>
+
+                  <button type="submit" value ="login" id="login">Login</button>
+                  <label>
+                        <input type="checkbox" checked="checked" id="remember"> Remember Me
+                  </label>
+                </div>
+
+                <div class="container" style="background-color:darkcyan">
+                  <button type="button" class="cancelbutton">Cancel</button>
+                  <span class="psw">Forgot <a href="#">password?</a></span>
+                </div>
+          </form>
+</body>
+</html>
