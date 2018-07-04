@@ -41,9 +41,8 @@ public class HomeController
         {
             //close the session
             session.invalidate();
-
             //redirect to the login page
-            return "redirect : login";
+            return "redirect:login";
         }
 }
 
