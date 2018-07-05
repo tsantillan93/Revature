@@ -1,6 +1,7 @@
 package com.revature.data;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +29,40 @@ public class UserHibernate implements UserDAO, HibernateSession {
 		User u = q.getSingleResult();
 		session.close();
 		return u;
+	}
+
+	@Override
+	public int addUser(User u) {
+		Session session = hu.getSession();
+		Transaction t = null;
+		try {
+			t = session.beginTransaction();
+			session.persist(u);
+			t.commit();
+			return 1;
+		} catch(Exception e) {
+			t.rollback();
+			e.printStackTrace();
+			return 0;
+		} finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public User getUser(User u) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateUser(User u) {
+		Session s = hu.getSession();
+		Transaction t = s.beginTransaction();
+		s.update(u);
+		t.commit();
+		s.close();
+		
 	}
 
 }

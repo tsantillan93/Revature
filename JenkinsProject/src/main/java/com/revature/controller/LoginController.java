@@ -40,7 +40,7 @@ public class LoginController
         	}
         	
         	//if registration is successful, redirect to the login
-        	return "redirect:static/login";
+        	return "redirect:login";
         }
 
         @RequestMapping(method = RequestMethod.POST) //maps POST requests to this function
