@@ -13,22 +13,22 @@ import { User } from 'src/app/user';
 
 export class LoginComponent implements OnInit {
   public loggedUser: User;
-  private username: string;
-  private password: string;
+  private user: string;
+  private pass: string;
 
   constructor(
     private userService: UserserviceService
   ) { }
 
   ngOnInit() {
-    this.userService.login(null, null).subscribe( user => {
-      this.loggedUser = user;
-      //  purchase stuff
-    });
+    // this.userService.login(null, null).subscribe( user => {
+    //   this.loggedUser = user;
+    //   //  purchase stuff
+    // });
   }
   login(): void {
-    console.log('Inside login component: '+ this.username);
-    this.userService.login(this.username, this.password).subscribe(
+    console.log('Inside login component: '+ this.user);
+    this.userService.login(this.user, this.pass).subscribe(
       user => {
         this.loggedUser = user;
         // purchase stuff
