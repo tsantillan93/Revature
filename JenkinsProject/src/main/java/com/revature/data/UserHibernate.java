@@ -32,21 +32,37 @@ public class UserHibernate implements UserDAO, HibernateSession {
 	}
 
 	@Override
-	public User addUser(User u) {
+	public int addUser(User u) {
 		Session session = hu.getSession();
 		Transaction t = null;
 		try {
 			t = session.beginTransaction();
 			session.persist(u);
 			t.commit();
-			return u;
+			return 1;
 		} catch(Exception e) {
 			t.rollback();
 			e.printStackTrace();
-			return null;
+			return 0;
 		} finally {
 			session.close();
 		}
+	}
+
+	@Override
+	public User getUser(User u) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateUser(User u) {
+		Session s = hu.getSession();
+		Transaction t = s.beginTransaction();
+		s.update(u);
+		t.commit();
+		s.close();
+		
 	}
 
 }
