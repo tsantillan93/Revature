@@ -48,4 +48,8 @@ export class UserserviceService {
     }
   }
 
+  register(user : User)
+  {
+    return this.http.post(this.appUrl + '/register', user);
+  }
 }

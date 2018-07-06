@@ -24,6 +24,7 @@ public class User {
 	private String firstName;
 	@Column(name="L_NAME")
 	private String lastName;
+	@Column(name="EMAIL")
 	private String email;
 	
 	public User() {

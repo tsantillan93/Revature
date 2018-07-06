@@ -15,4 +15,10 @@ private UserDAO ud= new UserHibernate();
 		return ud.getUser(username, password);
 	}
 
+	@Override
+	public int register(User u) 
+	{
+		return ud.addUser(u);	
+	}
+
 }

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -12,6 +13,7 @@ import com.revature.services.LoginService;
 
 @Controller
 @RequestMapping(value = "/login") //maps the url
+@CrossOrigin(origins = "http://localhost:4200")
 public class LoginController
 {
         @Autowired
@@ -22,12 +24,25 @@ public class LoginController
         {
             if(session.getAttribute("user") == null)
             {
-                //if the login was successful, forward to the login page
+                //if the login was UNsuccessful, forward to the login page
                 return "static/login.html";
             }
 
-            //if the login was UNsuccessful, redirect to the home page/dashboard
+            //if the login was successful, redirect to the home page/dashboard
             return "redirect:home";
+        }
+        
+        @RequestMapping(value = "/register", method = RequestMethod.POST)
+        public String register(User u) 
+        {
+        	int userId = loginService.register(u);
+        	if (userId == 0) //if the registration was UNsuccessful, forward to the registration page
+        	{
+        		return "static/registration.html";
+        	}
+        	
+        	//if registration is successful, redirect to the login
+        	return "redirect:login";
         }
 
         @RequestMapping(method = RequestMethod.POST) //maps POST requests to this function
