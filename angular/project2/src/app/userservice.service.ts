@@ -48,8 +48,11 @@ export class UserserviceService {
     }
   }
 
-  register(user : User)
-  {
-    return this.http.post(this.appUrl + '/register', user);
+  register(user: User): Observable<User> {
+    const body = '/register';
+    return this.http.post(this.appUrl, body,
+      { headers: this.headers, withCredentials: true }).pipe(
+        map(resp => resp as User)
+      );
   }
 }
