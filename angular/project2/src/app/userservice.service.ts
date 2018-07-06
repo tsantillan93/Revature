@@ -47,5 +47,7 @@ export class UserserviceService {
         ));
     }
   }
-
+  logout() {
+    this.user = null;
+  }
 }

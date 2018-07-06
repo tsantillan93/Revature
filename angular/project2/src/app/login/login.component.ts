@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     // });
   }
   login(): void {
-    console.log('Inside login component: '+ this.user);
+    console.log('Inside login component: ' + this.user);
     this.userService.login(this.user, this.pass).subscribe(
       user => {
         this.loggedUser = user;
