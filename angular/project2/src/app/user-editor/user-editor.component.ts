@@ -19,16 +19,16 @@ export class UserEditorComponent implements OnInit {
   constructor(private userService: UserserviceService) { }
 
   ngOnInit() {
-    this.userService.edit(null, null, null).subscribe( user => {
-      this.loggedUser = user;
-    });
+    // this.userService.edit(null, null, null).subscribe( user => {
+    //   this.loggedUser = user;
+    // });
   }
   edit(): void {
-    console.log('Inside edit component: '+ this.loggedUser);
-    this.userService.edit(this.firstName, this.lastName, this.emailAddress).subscribe(
-      user => {
-        this.loggedUser = user;
-      }
-    );
+    console.log('Inside edit component: ' + this.loggedUser);
+    // this.userService.edit(this.firstName, this.lastName, this.emailAddress).subscribe(
+    //   user => {
+    //     this.loggedUser = user;
+    //   }
+    // );
   }
 }
