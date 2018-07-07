@@ -1,5 +1,6 @@
 package com.revature.data;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
 import com.revature.beans.User;
 import com.revature.utils.HibernateUtil;
 
-
+@Component
 public class UserHibernate implements UserDAO, HibernateSession {
 	private HibernateUtil hu = new HibernateUtil();
 	private Session session;
@@ -32,21 +33,27 @@ public class UserHibernate implements UserDAO, HibernateSession {
 	}
 
 	@Override
-	public int addUser(User u) {
-		Session session = hu.getSession();
-		Transaction t = null;
-		try {
-			t = session.beginTransaction();
-			session.persist(u);
+	public User addUser(User u) 
+	{
+		session = hu.getSession();
+		Transaction t = session.beginTransaction();
+		try 
+		{
+			session.save(u);
 			t.commit();
-			return 1;
-		} catch(Exception e) {
+		} 
+		
+		catch(HibernateException e) 
+		{
 			t.rollback();
-			e.printStackTrace();
-			return 0;
-		} finally {
+		} 
+		
+		finally 
+		{
 			session.close();
 		}
+		
+		return u;
 	}
 
 	@Override
@@ -57,11 +64,11 @@ public class UserHibernate implements UserDAO, HibernateSession {
 
 	@Override
 	public void updateUser(User u) {
-		Session s = hu.getSession();
-		Transaction t = s.beginTransaction();
-		s.update(u);
+		session = hu.getSession();
+		Transaction t = session.beginTransaction();
+		session.update(u);
 		t.commit();
-		s.close();
+		session.close();
 		
 	}
 

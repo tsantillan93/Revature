@@ -8,6 +8,7 @@ import com.revature.data.UserHibernate;
 
 @Service
 public class LoginServiceHibernate implements LoginService {
+	
 private UserDAO ud= new UserHibernate();
 
 	@Override
@@ -16,9 +17,9 @@ private UserDAO ud= new UserHibernate();
 	}
 
 	@Override
-	public int register(User u) 
+	public User register(User u) 
 	{
-		return ud.addUser(u);	
+		return ud.addUser(u);
 	}
 
 }

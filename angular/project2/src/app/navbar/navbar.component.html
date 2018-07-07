@@ -1,0 +1,24 @@
+<div class="navbar">
+  <a class="active">{{title}}</a>
+  <a (click) = "logout()" id="Logout">
+    <input type="button" class="button" value="Logout">
+  </a>
+  
+  <a (click) = "getEditUser()"id="edituser">
+    <input type="button" class="button" value="Edit User">
+  </a>
+</div>
+
+<!-- //here test -->
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+  <a class="navbar-brand" routerLink="/home">
+      <span class="badge-primary">{{title}}</span>
+  </a>
+  <span flex></span>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon">Edit</span>
+</button>
+<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon">Logout</span>
+</button>
+</nav> -->
