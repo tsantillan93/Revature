@@ -1,10 +1,10 @@
 <div class="navbar">
   <a class="active">{{title}}</a>
-  <a id="Logout">
+  <a (click) = "logout()" id="Logout">
     <input type="button" class="button" value="Logout">
   </a>
   
-  <a id="edituser">
+  <a (click) = "getEditUser()"id="edituser">
     <input type="button" class="button" value="Edit User">
   </a>
 </div>
