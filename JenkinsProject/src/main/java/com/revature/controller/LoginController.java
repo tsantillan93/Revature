@@ -5,8 +5,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.revature.beans.User;
 import com.revature.services.LoginService;
@@ -33,15 +35,24 @@ public class LoginController
         }
         
         @RequestMapping(value = "/register", method = RequestMethod.POST)
-        public String register(User u) 
+        public String register(@RequestBody User u) 
         {
+        	System.out.println("Made it!");
+        	System.out.println(u);
         	int userId = loginService.register(u);
+        	System.out.println("userID");
         	if (userId == 0) //if the registration was UNsuccessful, forward to the registration page
         	{
         		return "static/registration.html";
         	}
         	
         	//if registration is successful, redirect to the login
+        	return "redirect:login";
+        }
+        //Tye added this to see of it fixed the method unsupported error but it didn't
+        @RequestMapping(value = "/register", method = RequestMethod.GET)
+        public String register() 
+        {
         	return "redirect:login";
         }
 

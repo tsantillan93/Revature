@@ -27,3 +27,4 @@ package-lock.json
 package.json
 src/app/app.component.html
 src/app/app.module.ts
+/.metadata/

@@ -23,13 +23,13 @@
 
     <div>
       <label for="email">Email Address:</label>
-      <input type="email" formControlName="emailAddress"/>
+      <input type="email" formControlName="email"/>
     </div>
-    <div *ngIf="submitted && registrationForm.controls['emailAddress'].errors" class="alert alert-danger">
-      <div *ngIf="registrationForm.controls['emailAddress'].errors.required">
+    <div *ngIf="submitted && registrationForm.controls['email'].errors" class="alert alert-danger">
+      <div *ngIf="registrationForm.controls['email'].errors.required">
         Email Address is required.
       </div>
-      <div *ngIf="registrationForm.controls['emailAddress'].errors.email">
+      <div *ngIf="registrationForm.controls['email'].errors.email">
         Email Address must be a valid email address.
       </div>
     </div>

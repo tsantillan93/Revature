@@ -48,11 +48,12 @@ export class UserserviceService {
     }
   }
 
-  register(user: User): Observable<User> {
-    const body = '/register';
-    return this.http.post(this.appUrl, body,
-      { headers: this.headers, withCredentials: true }).pipe(
-        map(resp => resp as User)
+  register(user: User) {
+    console.log(user);
+    const body = user;
+    return this.http.post(this.appUrl + '/register', body,
+      { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin' : 'localhost:4200' }), withCredentials: true }).pipe(
+        map(resp => user = resp as User)
       );
   }
 }
