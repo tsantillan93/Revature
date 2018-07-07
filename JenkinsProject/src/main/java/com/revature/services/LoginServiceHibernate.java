@@ -18,7 +18,7 @@ private UserDAO ud= new UserHibernate();
 	@Override
 	public int register(User u) 
 	{
-		return ud.addUser(u);	
+		return ud.addUser(u);
 	}
 
 }
