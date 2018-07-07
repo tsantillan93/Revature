@@ -12,5 +12,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  getEditUser(): void {
+    console.log('edittting');
+  }
+  logout(): void {
+    console.log('logging out');
+  }
 }
