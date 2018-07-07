@@ -59,10 +59,10 @@ public class UserHibernate implements UserDAO, HibernateSession {
 	@Override
 	public void updateUser(User u) {
 
-		Transaction t = session.beginTransaction();
-		session.update(u);
+		Transaction t = s.beginTransaction();
+		s.update(u);
 		t.commit();
-		session.close();
+		s.close();
 		
 	}
 
