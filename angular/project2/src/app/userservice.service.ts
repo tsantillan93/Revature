@@ -21,9 +21,9 @@ export class UserserviceService {
   login(username: string, password: string): Observable<User> {
     if (username && password) {
       // we need to log in
-      console.log(username);
-      const body = `user=${username}&pass=${password}`;
-      return this.http.post(this.appUrl, body, { headers: this.headers, withCredentials: true }).pipe(
+      console.log(username + ' ' + password);
+      const body = `username=${username}&password=${password}`;
+      return this.http.post(this.appUrl + 'login', body, { headers: this.headers, withCredentials: true }).pipe(
         map(
           resp => {
             const user: User = resp as User;
@@ -35,7 +35,7 @@ export class UserserviceService {
       );
     } else {
       // we are just checking to see if we're already logged in
-      return this.http.get(this.appUrl, { withCredentials: true })
+      return this.http.get(this.appUrl + 'login', { withCredentials: true })
         .pipe(map(
           resp => {
             const user: User = resp as User;
@@ -55,5 +55,14 @@ export class UserserviceService {
       { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin' : 'localhost:4200' }), withCredentials: true }).pipe(
         map(resp => user = resp as User)
       );
+  }
+
+  logout(): Observable<Object> {
+    return this.http.get(this.appUrl + 'logout', { withCredentials: true }).pipe(
+      map(success => {
+        this.user = null;
+        return success;
+      })
+    );
   }
 }
