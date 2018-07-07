@@ -12,7 +12,7 @@ import { User } from './user';
 })
 
 export class UserserviceService {
-  private appUrl = 'http://localhost:8080/JenkinsProject/login';
+  private appUrl = 'http://localhost:8080/JenkinsProject/';
   private headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
   private user: User;
 
@@ -51,7 +51,7 @@ export class UserserviceService {
   register(user: User) {
     console.log(user);
     const body = user;
-    return this.http.post(this.appUrl + '/register', body,
+    return this.http.post(this.appUrl + 'register', body,
       { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin' : 'localhost:4200' }), withCredentials: true }).pipe(
         map(resp => user = resp as User)
       );
