@@ -4,11 +4,12 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.User;
 import com.revature.utils.HibernateUtil;
 
-
+@Component
 public class UserHibernate implements UserDAO, HibernateSession {
 	private HibernateUtil hu = new HibernateUtil();
 	private Session session;
@@ -21,7 +22,7 @@ public class UserHibernate implements UserDAO, HibernateSession {
 
 	@Override
 	public User getUser(String username, String password) {
-
+		session = hu.getSession();
 		String query = "from User u where u.username=:username and u.password=:password";
 		Query<User> q = session.createQuery(query, User.class);
 		q.setParameter("username", username);
@@ -32,14 +33,13 @@ public class UserHibernate implements UserDAO, HibernateSession {
 	}
 
 	@Override
-	public int addUser(User u) 
+	public User addUser(User u) 
 	{
 		session = hu.getSession();
 		Transaction t = session.beginTransaction();
-		Integer i = 0;
 		try 
 		{
-			i = (Integer) session.save(u);
+			session.save(u);
 			t.commit();
 		} 
 		
@@ -53,7 +53,7 @@ public class UserHibernate implements UserDAO, HibernateSession {
 			session.close();
 		}
 		
-		return i;
+		return u;
 	}
 
 	@Override
@@ -64,11 +64,11 @@ public class UserHibernate implements UserDAO, HibernateSession {
 
 	@Override
 	public void updateUser(User u) {
-		Session s = hu.getSession();
-		Transaction t = s.beginTransaction();
-		s.update(u);
+		session = hu.getSession();
+		Transaction t = session.beginTransaction();
+		session.update(u);
 		t.commit();
-		s.close();
+		session.close();
 		
 	}
 

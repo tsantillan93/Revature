@@ -9,12 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Post;
 import com.revature.beans.User;
 import com.revature.services.HomeService;
 
-@Controller
+@RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class HomeController
 {
@@ -58,7 +59,7 @@ public class HomeController
             //close the session
             session.invalidate();
             //redirect to the login page
-            return "redirect:login";
+            return null;
         }
 }
 
