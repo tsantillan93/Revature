@@ -10,7 +10,8 @@
           <input type="password" [(ngModel)]="pass" class="form-control" id="pass">
         </li>
         <li>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" (click) = "login()">Submit</button>
         </li>
     </ul>
+    <div><a [routerLink]="['/register']" class="btn btn-link">Register</a></div>
 </ng-container>
