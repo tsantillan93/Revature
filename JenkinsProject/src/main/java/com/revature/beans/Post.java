@@ -2,9 +2,12 @@ package com.revature.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -17,9 +20,9 @@ public class Post {
 	@GeneratedValue(generator="POSTID_SEQ", strategy=GenerationType.SEQUENCE)
 	private int id;
 	private String title;
-	@Column(name="USER_ID")
-	//private User owner;
-	private int ownerId;
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="USER_ID")
+	private User owner;
 	@Column(name="POST_START_DATE")
 	private String startDate;
 	@Column(name="POST_END_DATE")
@@ -32,12 +35,13 @@ public class Post {
 	public Post() {
 		super();
 	}
-	public Post(int id, String title, int ownerId, String startDate, String endDate, String description, double latitude,
+
+	public Post(int id, String title, User owner, String startDate, String endDate, String description, double latitude,
 			double longitude, double price) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.ownerId = ownerId;
+		this.owner = owner;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.description = description;
@@ -45,66 +49,79 @@ public class Post {
 		this.longitude = longitude;
 		this.price = price;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public int getOwnerId() {
-		return ownerId;
+
+	public User getOwner() {
+		return owner;
 	}
-	public void setOwnerId(int ownerId) {
-		this.ownerId = ownerId;
+
+	public void setOwner(User owner) {
+		this.owner = owner;
 	}
-	//	public User getOwner() {
-//		return owner;
-//	}
-//	public void setOwner(User owner) {
-//		this.owner = owner;
-//	}
+
 	public String getStartDate() {
 		return startDate;
 	}
+
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
+
 	public String getEndDate() {
 		return endDate;
 	}
+
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public double getLatitude() {
 		return latitude;
 	}
+
 	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
+
 	public double getLongitude() {
 		return longitude;
 	}
+
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
+
 	public double getPrice() {
 		return price;
 	}
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -117,13 +134,14 @@ public class Post {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(longitude);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ownerId;
+		result = prime * result + ((owner == null) ? 0 : owner.hashCode());
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -149,7 +167,10 @@ public class Post {
 			return false;
 		if (Double.doubleToLongBits(longitude) != Double.doubleToLongBits(other.longitude))
 			return false;
-		if (ownerId != other.ownerId)
+		if (owner == null) {
+			if (other.owner != null)
+				return false;
+		} else if (!owner.equals(other.owner))
 			return false;
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
@@ -165,11 +186,14 @@ public class Post {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", title=" + title + ", ownerId=" + ownerId + ", startDate=" + startDate
-				+ ", endDate=" + endDate + ", description=" + description + ", latitude=" + latitude + ", longitude="
-				+ longitude + ", price=" + price + "]";
+		return "Post [id=" + id + ", title=" + title + ", owner=" + owner + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", description=" + description + ", latitude=" + latitude + ", longitude=" + longitude
+				+ ", price=" + price + "]";
 	}
+
+	
     
 }
