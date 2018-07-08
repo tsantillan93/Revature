@@ -2,7 +2,9 @@ package com.revature.data;
 
 import java.util.Set;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.revature.beans.Post;
 import com.revature.beans.User;
@@ -20,8 +22,17 @@ public class PostHibernate implements PostDAO, HibernateSession {
 	
 	@Override
 	public Post addPost(Post post) {
-		// TODO Auto-generated method stub
-		return null;
+		session = hu.getSession();
+		Transaction t = session.beginTransaction();
+		try {
+			session.save(post);
+			t.commit();
+		} catch(HibernateException e) {
+			t.rollback();
+		} finally {
+			session.close();
+		}
+		return post;
 	}
 
 	@Override
