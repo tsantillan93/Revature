@@ -16,8 +16,10 @@ public class Post {
 	@SequenceGenerator(name="POSTID_SEQ", sequenceName="POSTID_SEQ")
 	@GeneratedValue(generator="POSTID_SEQ", strategy=GenerationType.SEQUENCE)
 	private int id;
+	private String title;
 	@Column(name="USER_ID")
-	private User owner;
+	//private User owner;
+	private int ownerId;
 	@Column(name="POST_START_DATE")
 	private String startDate;
 	@Column(name="POST_END_DATE")
@@ -26,14 +28,16 @@ public class Post {
     private double latitude;
     private double longitude;
     private double price;
+    
 	public Post() {
 		super();
 	}
-	public Post(int id, User owner, String startDate, String endDate, String description, double latitude,
+	public Post(int id, String title, int ownerId, String startDate, String endDate, String description, double latitude,
 			double longitude, double price) {
 		super();
 		this.id = id;
-		this.owner = owner;
+		this.title = title;
+		this.ownerId = ownerId;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.description = description;
@@ -47,12 +51,24 @@ public class Post {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public User getOwner() {
-		return owner;
+	public String getTitle() {
+		return title;
 	}
-	public void setOwner(User owner) {
-		this.owner = owner;
+	public void setTitle(String title) {
+		this.title = title;
 	}
+	public int getOwnerId() {
+		return ownerId;
+	}
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
+	}
+	//	public User getOwner() {
+//		return owner;
+//	}
+//	public void setOwner(User owner) {
+//		this.owner = owner;
+//	}
 	public String getStartDate() {
 		return startDate;
 	}
@@ -101,10 +117,11 @@ public class Post {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(longitude);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((owner == null) ? 0 : owner.hashCode());
+		result = prime * result + ownerId;
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
 	@Override
@@ -132,10 +149,7 @@ public class Post {
 			return false;
 		if (Double.doubleToLongBits(longitude) != Double.doubleToLongBits(other.longitude))
 			return false;
-		if (owner == null) {
-			if (other.owner != null)
-				return false;
-		} else if (!owner.equals(other.owner))
+		if (ownerId != other.ownerId)
 			return false;
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
@@ -144,13 +158,18 @@ public class Post {
 				return false;
 		} else if (!startDate.equals(other.startDate))
 			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", owner=" + owner + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", description=" + description + ", latitude=" + latitude + ", longitude=" + longitude + ", price="
-				+ price + "]";
+		return "Post [id=" + id + ", title=" + title + ", ownerId=" + ownerId + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", description=" + description + ", latitude=" + latitude + ", longitude="
+				+ longitude + ", price=" + price + "]";
 	}
     
 }
