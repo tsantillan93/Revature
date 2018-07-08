@@ -27,8 +27,11 @@ export class PostService {
 
   }
 
-  getPosts() {
-
+  getPosts(): Observable<Post[]> {
+    console.log("getPosts() in postService");
+    return this.http.get(this.appUrl + 'getPosts', { withCredentials: true }).pipe(
+      map( resp => resp as Post[])
+    );
   }
 
   getMyPosts() {

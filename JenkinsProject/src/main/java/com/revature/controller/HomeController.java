@@ -37,7 +37,7 @@ public class HomeController
         @RequestMapping(value = "/getPosts", method = RequestMethod.GET)
         public void getAllPosts()
         {
-        	Set <Post> posts = homeService.getAllPosts();
+        	homeService.getAllPosts();
         }
         
         @RequestMapping(value = "/viewUserInfo", method = RequestMethod.GET)

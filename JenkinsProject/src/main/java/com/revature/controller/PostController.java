@@ -1,5 +1,6 @@
 package com.revature.controller;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,13 @@ public class PostController {
 	
     @RequestMapping(value = "/getPost", method = RequestMethod.GET) //maps GET requests to this function
     @ResponseBody
-	public Set<Post> getPosts() {
-		return null;
+	public List<Post> getPosts() {
+		List<Post> posts = postService.getPosts(); 
+		if(posts == null) 
+		{
+			return null;
+		}
+		return posts;
 	}
 	
     @RequestMapping(value = "/getMyPost", method = RequestMethod.GET) //maps GET requests to this function
@@ -41,7 +47,7 @@ public class PostController {
 		return null;
 	}
 	
-    @RequestMapping(value = "/post", method = RequestMethod.PUT) //maps GET requests to this function
+    @RequestMapping(value = "/post", method = RequestMethod.PUT) //maps PUT requests to this function
     @ResponseBody
 	public void updatePost() {
 		
