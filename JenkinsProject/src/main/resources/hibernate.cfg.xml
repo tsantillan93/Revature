@@ -20,6 +20,7 @@
 		
 		<!-- JPA Annotations -->
 		<mapping class="com.revature.beans.User"></mapping>
+		<mapping class="com.revature.beans.Post"></mapping>
 
 	</session-factory>
 </hibernate-configuration>
