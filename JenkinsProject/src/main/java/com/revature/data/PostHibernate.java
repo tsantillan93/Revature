@@ -2,7 +2,9 @@ package com.revature.data;
 
 import java.util.Set;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.revature.beans.Post;
 import com.revature.beans.User;
@@ -26,14 +28,26 @@ public class PostHibernate implements PostDAO, HibernateSession {
 
 	@Override
 	public Post getPost(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		// get a session
+		Session s = hu.getSession();
+		// get a post from the session
+		Post p = s.get(Post.class, id);
+		// close the resource
+		s.close();
+		// return the post
+		return p;
 	}
 
 	@Override
 	public Post getPost(Post post) {
-		// TODO Auto-generated method stub
-		return null;
+		// get a session
+		Session s = hu.getSession();
+		// get a post from the session
+		Post p = s.get(Post.class, post.getId());
+		// close the resource
+		s.close();
+		// return the post
+		return p;
 	}
 
 	@Override
