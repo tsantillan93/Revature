@@ -16,7 +16,7 @@ import javax.persistence.Table;
 public class Post {
 	@Id
 	@Column(name="POST_ID")
-	@SequenceGenerator(name="POSTID_SEQ", sequenceName="POSTID_SEQ")
+	@SequenceGenerator(name="POSTID_SEQ", sequenceName="POSTID_SEQ",allocationSize = 1)
 	@GeneratedValue(generator="POSTID_SEQ", strategy=GenerationType.SEQUENCE)
 	private int id;
 	private String title;

@@ -38,10 +38,11 @@ public class HomeController
         	homeService.viewUserInfo(u);
         }
         
-        @RequestMapping(value = "/updateUserInfo", method = RequestMethod.PUT)
-        public void updateUserInfo(User u) 
+        @RequestMapping(value = "/updateUser", method = RequestMethod.PUT)
+        public User updateUserInfo(User u) 
         {
         	homeService.updateUserInfo(u);
+        	return u;
         }
 
         @RequestMapping(value = "/logout", method = RequestMethod.GET)

@@ -1,4 +1,4 @@
-<ng-template>
+<ng-container>
   <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
   
@@ -11,16 +11,16 @@
         <div class="modal-body">
           <ul class="form-group">
             <li>
-              <label for="fname">First Name:</label>
-              <input type="text" [(ngModel)]="firstName" class="form-control" id="fname"></input>
+              <label for="firstName">First Name:</label>
+              <input type="text" [(ngModel)]="firstName" class="form-control" id="firstName">
             </li>
             <li>
-                <label for="lname">Last Name:</label>
-                <input type="text" [(ngModel)]="lastName" class="form-control" id="lname"></input>
+                <label for="lastName">Last Name:</label>
+                <input type="text" [(ngModel)]="lastName" class="form-control" id="lastName">
             </li>
             <li>
-                <label for="email">Email Address:</label>
-                <input type="email" [(ngModel)]="emailAddress" class="form-control" id="email"></input>
+                <label for="emailAddress">Email Address:</label>
+                <input type="emailAddress" [(ngModel)]="emailAddress" class="form-control" id="emailAddress">
             </li>
           </ul>
         </div>
@@ -32,4 +32,4 @@
   
     </div>
   </div>
-</ng-template>
+</ng-container>

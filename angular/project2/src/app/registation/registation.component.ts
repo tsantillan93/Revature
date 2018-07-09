@@ -28,7 +28,7 @@ export class RegistationComponent implements OnInit {
       email : ['', [Validators.required, Validators.email]],
       username : ['', [Validators.required, Validators.minLength(6)]],
       password : ['', [Validators.required, Validators.minLength(8)]]
-    })
+    });
   }
 
   onSubmit()
