@@ -44,7 +44,7 @@ public class LoginController
         	System.out.println("Made it!");
         	System.out.println(u);
         	User user = loginService.register(u);
-        	System.out.println("userID");
+        	System.out.println(user);
         	if (user.getId() == 0) //if the registration was UNsuccessful, forward to the registration page
         	{
 //        		return "redirect:registration";

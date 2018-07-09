@@ -30,10 +30,11 @@ public class PostController {
 		return null;
 	}
 	
-    @RequestMapping(value = "/getPost", method = RequestMethod.GET) //maps GET requests to this function
+    @RequestMapping(value = "/getPosts", method = RequestMethod.GET) //maps GET requests to this function
     @ResponseBody
 	public List<Post> getPosts() {
-		List<Post> posts = postService.getPosts(); 
+		List<Post> posts = postService.getPosts();
+		System.out.println("getPosts() in the PostController and here are the posts: " + posts);
 		if(posts == null) 
 		{
 			return null;
