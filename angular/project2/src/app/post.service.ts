@@ -33,8 +33,11 @@ export class PostService {
 
   }
 
-  getPosts() {
-
+  getPosts(): Observable<Post[]> {
+    console.log("getPosts() in postService");
+    return this.http.get(this.appUrl + 'getPosts', { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin' : 'localhost:4200' }), withCredentials: true }).pipe(
+      map( resp => resp as Post[])
+    );
   }
 
   getMyPosts() {

@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import java.util.List;
 import java.util.Set;
 
 import com.revature.beans.Post;
@@ -10,7 +11,7 @@ public interface PostService {
 	Post getPost(int id);
 	Post getPost(Post post);
 	void updatePost(Post Post);
-	Set<Post> getPosts();
+	List<Post> getPosts();
 	Set<Post> getMyPosts(User user);
 
 

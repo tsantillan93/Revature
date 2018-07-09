@@ -20,7 +20,7 @@ public class Post {
 	@GeneratedValue(generator="POSTID_SEQ", strategy=GenerationType.SEQUENCE)
 	private int id;
 	private String title;
-	@OneToOne(fetch=FetchType.LAZY)
+	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="USER_ID")
 	private User owner;
 	@Column(name="POST_START_DATE")

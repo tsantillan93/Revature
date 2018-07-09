@@ -44,7 +44,7 @@ public class LoginController
         	System.out.println("Made it!");
         	System.out.println(u);
         	User user = loginService.register(u);
-        	System.out.println("userID");
+        	System.out.println(user);
         	if (user.getId() == 0) //if the registration was UNsuccessful, forward to the registration page
         	{
 //        		return "redirect:registration";
@@ -53,6 +53,7 @@ public class LoginController
         	//if registration is successful, redirect to the login
         	return user;
         }
+        
         //Tye added this to see of it fixed the method unsupported error but it didn't
         @RequestMapping(value = "/register", method = RequestMethod.GET)
         public String register() 
