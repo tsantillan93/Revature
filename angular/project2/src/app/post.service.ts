@@ -15,8 +15,14 @@ export class PostService {
 
   constructor(private http: HttpClient) { }
 
-  add() {
-
+  add(post: Post) {
+    console.log(post);
+    const body = post;
+    return this.http.post(this.appUrl + 'post', body,
+      { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin' : 'localhost:4200' }),
+        withCredentials: true }).pipe(
+        map(resp => post = resp as Post)
+      );
   }
 
   get() {
