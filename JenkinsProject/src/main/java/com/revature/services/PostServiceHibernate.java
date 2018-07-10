@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.stereotype.Service;
@@ -14,9 +15,9 @@ public class PostServiceHibernate implements PostService {
 	private PostDAO pd= new PostHibernate();
 
 	@Override
-	public Post addPost(Post post) {
-		// TODO Auto-generated method stub
-		return null;
+	public  Post addPost(Post post) {
+		//log.trace("Adding book to db");
+		return pd.addPost(post);
 	}
 
 	@Override
@@ -38,9 +39,8 @@ public class PostServiceHibernate implements PostService {
 	}
 
 	@Override
-	public Set<Post> getPosts() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Post> getPosts() {
+		return pd.getPosts();
 	}
 
 	@Override

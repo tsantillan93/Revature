@@ -1,12 +1,16 @@
 <div class="navbar">
   <a class="active">{{title}}</a>
-  <a (click) = "logout()" id="Logout">
-    <input type="button" class="button" value="Logout">
-  </a>
-  
-  <a (click) = "getEditUser()"id="edituser">
-    <input type="button" class="button" value="Edit User">
-  </a>
+  <a *ngIf="userService.getUser()">
+      <a (click) = "addPost()" id="addPost">
+          <input type="button" class="button" value="Add Post">
+      </a>
+      <a (click) = "logout()" id="Logout">
+          <input type="button" class="button" value="Logout">
+      </a>
+      <a (click) = "getEditUser()"id="edituser">
+        <input type="button" class="button" value="Edit User">
+      </a>
+  </a> 
 </div>
 
 <!-- //here test -->

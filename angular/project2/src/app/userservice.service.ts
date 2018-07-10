@@ -17,6 +17,9 @@ export class UserserviceService {
   private user: User;
 
   constructor(private http: HttpClient) { }
+getUser(): User {
+  return this.user;
+}
 
   login(username: string, password: string): Observable<User> {
     if (username && password) {
@@ -56,6 +59,15 @@ export class UserserviceService {
         map(resp => user = resp as User)
       );
   }
+  update(user: User) {
+    console.log(user);
+    const body = user;
+    return this.http.post(this.appUrl + 'updateUser', body,
+      { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin' : 'localhost:4200' }), withCredentials: true }).pipe(
+        map(resp => user = resp as User)
+      );
+  }
+
 
   logout(): Observable<Object> {
     return this.http.get(this.appUrl + 'logout', { withCredentials: true }).pipe(
@@ -65,4 +77,7 @@ export class UserserviceService {
       })
     );
   }
+
+
+
 }
