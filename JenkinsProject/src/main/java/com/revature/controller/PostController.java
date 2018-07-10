@@ -1,6 +1,5 @@
 package com.revature.controller;
 
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Post;
+import com.revature.beans.User;
 import com.revature.services.PostService;
 
 @RestController
@@ -32,8 +32,8 @@ public class PostController {
 	
     @RequestMapping(value = "/getPosts", method = RequestMethod.GET) //maps GET requests to this function
     @ResponseBody
-	public List<Post> getPosts() {
-		List<Post> posts = postService.getPosts();
+	public Set<Post> getPosts() {
+		Set<Post> posts = postService.getPosts();
 		System.out.println("getPosts() in the PostController and here are the posts: " + posts);
 		if(posts == null) 
 		{
@@ -42,16 +42,22 @@ public class PostController {
 		return posts;
 	}
 	
-    @RequestMapping(value = "/getMyPost", method = RequestMethod.GET) //maps GET requests to this function
+    @RequestMapping(value = "/getMyPosts", method = RequestMethod.GET) //maps GET requests to this function
     @ResponseBody
-	public Set<Post>getMyPosts() {
-		return null;
+	public Set<Post>getMyPosts(@RequestBody User user) {
+		Set<Post> myPosts = postService.getMyPosts(user);
+		if(myPosts == null) 
+		{
+			return null;
+		}
+		System.out.println(myPosts);
+		return myPosts;
 	}
 	
     @RequestMapping(value = "/post", method = RequestMethod.PUT) //maps PUT requests to this function
     @ResponseBody
-	public void updatePost() {
-		
+	public void updatePost(@RequestBody Post p) {//may need to use @PathVariable if we're gonna have the post id in the uri
+    	postService.updatePost(p);
 	}
 
 }

@@ -1,6 +1,6 @@
 package com.revature.services;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
@@ -14,13 +14,6 @@ import com.revature.data.UserHibernate;
 @Service
 public class HomeServiceHibernate implements HomeService {
 	private UserDAO ud= new UserHibernate();
-	private PostDAO pd= new PostHibernate();
-	@Override
-	public List<Post> getAllPosts() 
-	{
-		System.out.println("Got to HSH getAllPosts");
-		return pd.getPosts();
-	}
 
 	@Override
 	public void viewUserInfo(User u) 

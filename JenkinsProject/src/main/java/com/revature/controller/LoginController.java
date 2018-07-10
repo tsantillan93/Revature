@@ -53,13 +53,6 @@ public class LoginController
         	//if registration is successful, redirect to the login
         	return user;
         }
-        
-        //Tye added this to see of it fixed the method unsupported error but it didn't
-        @RequestMapping(value = "/register", method = RequestMethod.GET)
-        public String register() 
-        {
-        	return "redirect:login";
-        }
 
         @RequestMapping(value = "/login", method = RequestMethod.POST) //maps POST requests to this function
         @ResponseBody
