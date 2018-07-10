@@ -11,8 +11,12 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegistationComponent } from './registation/registation.component';
 import { NavbarComponent } from './navbar/navbar.component';
+<<<<<<< Updated upstream
 import { AddPostComponent } from './add-post/add-post.component';
 import { UserEditorComponent } from './user-editor/user-editor.component';
+=======
+import { MyPostsComponent } from './my-posts/my-posts.component';
+>>>>>>> Stashed changes
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,8 +24,12 @@ import { UserEditorComponent } from './user-editor/user-editor.component';
     RegistationComponent,
     HomeComponent,
     NavbarComponent,
+<<<<<<< Updated upstream
     AddPostComponent,
     UserEditorComponent
+=======
+    MyPostsComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

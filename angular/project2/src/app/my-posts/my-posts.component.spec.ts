@@ -14,12 +14,8 @@ describe('MyPostComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MyPostsComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+})});
