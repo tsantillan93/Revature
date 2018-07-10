@@ -11,7 +11,7 @@ import { Router } from '../../../node_modules/@angular/router';
 })
 export class HomeComponent implements OnInit {
   public posts: Post[];
-  
+
   constructor(private postService: PostService, private router: Router) { }
 
   ngOnInit() {
