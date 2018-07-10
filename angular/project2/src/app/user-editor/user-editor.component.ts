@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserserviceService } from 'src/app/userservice.service';
+import { UserserviceService } from '../userservice.service';
 
-import { User } from 'src/app/user';
+import { User } from '../user';
 
 @Component({
   selector: 'app-user-editor',
