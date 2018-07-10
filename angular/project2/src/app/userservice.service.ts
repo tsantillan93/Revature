@@ -60,7 +60,7 @@ getUser(): User {
         map(resp => user = resp as User)
       );
   }
-  
+
   update(user: User) {
     console.log(user);
     const body = user;
