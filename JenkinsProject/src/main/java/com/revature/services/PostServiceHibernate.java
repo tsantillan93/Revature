@@ -23,6 +23,7 @@ public class PostServiceHibernate implements PostService {
 	public Post getPost(int id) {
 		Post post = pd.getPost(id);
 		return post;
+
 	}
 
 	@Override

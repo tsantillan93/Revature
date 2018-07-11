@@ -6,6 +6,7 @@ import { HomeComponent} from 'src/app/home/home.component';
 import { RegistationComponent } from 'src/app/registation/registation.component';
 import { UserEditorComponent } from 'src/app/user-editor/user-editor.component';
 import { AddPostComponent } from 'src/app/add-post/add-post.component';
+import {MypostComponent} from 'src/app/mypost/mypost.component';
 import { LoginComponent} from '../login/login.component';
 import { MyPostsComponent } from '../my-posts/my-posts.component';
 
@@ -34,6 +35,14 @@ const routes = [
   {
     path: 'addPost',
     component: AddPostComponent
+  },
+  {
+    path: 'mypost',
+    component: MypostComponent
+  },
+  {
+    path: 'mypost/:id',
+    component: MypostComponent
   },
   {
     path: 'myPosts',

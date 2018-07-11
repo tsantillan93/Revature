@@ -29,6 +29,7 @@ public class PostController {
 		return postService.addPost(post);
 	}
 	
+
     @RequestMapping(value = "/post/{id}", method = RequestMethod.GET) //maps GET requests to this function
     @ResponseBody
 	public Post getPost(@PathVariable int id) {
