@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,10 +25,11 @@ public class PostController {
 		return postService.addPost(post);
 	}
 	
-    @RequestMapping(value = "/post", method = RequestMethod.GET) //maps GET requests to this function
-    @ResponseBody
-	public Post getPost() {
-		return null;
+    @RequestMapping(value="{postId}", method=RequestMethod.GET)
+	public Post getBook(@PathVariable("postId") int id) {
+    	Post p =  postService.getPost(id);
+		System.out.println(p);
+		return p;
 	}
 	
     @RequestMapping(value = "/getPosts", method = RequestMethod.GET) //maps GET requests to this function

@@ -41,8 +41,10 @@ public class PostHibernate implements PostDAO, HibernateSession {
 
 	@Override
 	public Post getPost(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		session = hu.getSession();
+		Post p = session.get(Post.class, id);
+		session.close();
+		return p;
 	}
 
 	@Override

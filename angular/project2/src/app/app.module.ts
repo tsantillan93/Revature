@@ -13,6 +13,7 @@ import { RegistationComponent } from './registation/registation.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { UserEditorComponent } from './user-editor/user-editor.component';
+import { MypostComponent } from './mypost/mypost.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { UserEditorComponent } from './user-editor/user-editor.component';
     HomeComponent,
     NavbarComponent,
     AddPostComponent,
-    UserEditorComponent
+    UserEditorComponent,
+    MypostComponent
   ],
   imports: [
     BrowserModule,
