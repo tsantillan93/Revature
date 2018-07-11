@@ -22,4 +22,9 @@ export class HomeComponent implements OnInit {
   {
     this.router.navigate(['/myPosts']);
   }
+
+  viewPost(id: number) {
+    this.router.navigate(['post/' + id]);
+  }
+
 }

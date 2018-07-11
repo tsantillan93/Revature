@@ -7,7 +7,7 @@ import { Post } from './post';
 import { User } from './user';
 import { UserserviceService } from './userservice.service';
 
-//import { loggedUser } from './userservice.service';
+// import { loggedUser } from './userservice.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,11 +30,21 @@ export class PostService {
       );
   }
 
-  get() {
+  get(id: number): Observable<Post> {
+    const url: string = this.appUrl + 'post/' + id;
 
+    return this.http.get(url, {withCredentials: true }).pipe(
+      map(resp => resp as Post)
+    );
   }
 
-  update() {
+  update(post: Post) {
+    console.log(post);
+    const body = post;
+    return this.http.post(this.appUrl + 'updatePost', body,
+      { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin' : 'localhost:4200' }), withCredentials: true }).pipe(
+        map(resp => post = resp as Post)
+      );
 
   }
 

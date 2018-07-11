@@ -1,0 +1,26 @@
+   <div class="modal-content" *ngIf="openPost">
+  <div class="modal-header">
+    <h4 class="modal-title">Edit my Post</h4>
+  </div>
+  <div class="modal-body" >
+    <ul class="form-group">
+      <li>
+          <label for="id"> Id:</label>
+          <input type="text" [(ngModel)]="openPost.id" class="form-control" id="id" disabled>
+      </li>
+      <li>
+        <label for="title">Title:</label>
+        <input type="text" [(ngModel)]="openPost.title" class="form-control" id="title" disabled>
+      </li>
+      <li>
+          <label for="description">Description:</label>
+          <input type="text"  [(ngModel)]="openPost.description" class="form-control" id="description" disabled> 
+      </li> 
+      <li>
+          <label for="price">Price:</label>
+          <input type="number"  [(ngModel)]="openPost.price" class="form-control" id="price" disabled> 
+      </li>
+    </ul>
+  </div>
+  <button (click)="enable()" id="edit"> editbutton</button>
+  

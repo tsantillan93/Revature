@@ -6,11 +6,14 @@ import { HomeComponent} from 'src/app/home/home.component';
 import { RegistationComponent } from 'src/app/registation/registation.component';
 import { UserEditorComponent } from 'src/app/user-editor/user-editor.component';
 import { AddPostComponent } from 'src/app/add-post/add-post.component';
+import {MypostComponent} from 'src/app/mypost/mypost.component';
 import { LoginComponent} from '../login/login.component';
 import { MyPostsComponent } from '../my-posts/my-posts.component';
+import { PostComponent } from '../post/post.component';
 
 const routes = [
   {
+    path: '',
     redirectTo: '/login',
     pathMatch: 'full'
   },
@@ -33,6 +36,14 @@ const routes = [
   {
     path: 'addPost',
     component: AddPostComponent
+  },
+  {
+    path: 'post/:id',
+    component: PostComponent
+  },
+  {
+    path: 'mypost/:id',
+    component: MypostComponent
   },
   {
     path: 'myPosts',

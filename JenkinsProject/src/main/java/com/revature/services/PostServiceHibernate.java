@@ -21,14 +21,15 @@ public class PostServiceHibernate implements PostService {
 
 	@Override
 	public Post getPost(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Post post = pd.getPost(id);
+		return post;
+
 	}
 
 	@Override
 	public Post getPost(Post post) {
-		// TODO Auto-generated method stub
-		return null;
+		Post functionPost = pd.getPost(post);
+		return functionPost;
 	}
 
 	@Override

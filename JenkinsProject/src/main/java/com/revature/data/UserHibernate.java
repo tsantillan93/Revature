@@ -66,6 +66,7 @@ public class UserHibernate implements UserDAO, HibernateSession {
 	public void updateUser(User u) {
 		session = hu.getSession();
 		Transaction t = session.beginTransaction();
+		System.out.println(u);
 		session.update(u);
 		t.commit();
 		session.close();

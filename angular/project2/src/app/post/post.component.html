@@ -1,0 +1,10 @@
+<ng-container *ngIf="selectedPost">
+  <h2>{{selectedPost.title}}</h2>
+  <p>Posted by: {{selectedPost.owner.username}} on {{startDate}}</p>
+  <p>Ends: endDate</p>
+  <p>Description:</p>
+  <p>{{selectedPost.description}}</p>
+  <p>Location:</p>
+  <p>Latitude: {{selectedPost.latitude}}, Longitude: {{selectedPost.longitude}}</p>
+  <p>Post# {{selectedPost.id}}</p>
+</ng-container>
