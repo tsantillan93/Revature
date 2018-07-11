@@ -64,7 +64,7 @@ getUser(): User {
   update(user: User) {
     console.log(user);
     const body = user;
-    return this.http.post(this.appUrl + 'updateUser', body,
+    return this.http.put(this.appUrl + 'updateUser', body,
       { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin' : 'localhost:4200' }), withCredentials: true }).pipe(
         map(resp => user = resp as User)
       );

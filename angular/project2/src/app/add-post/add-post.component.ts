@@ -28,8 +28,8 @@ export class AddPostComponent implements OnInit {
     }
     this.registrationForm = this.formBuilder.group
     ({
-      title : ['', Validators.required],
-      description : ['tell me something about what youre selling.'],
+      title : ['', Validators.required, Validators.maxLength(50)],
+      description : ['tell me something about what youre selling', Validators.maxLength(300)],
       price : ['', [Validators.required]],
 
     });

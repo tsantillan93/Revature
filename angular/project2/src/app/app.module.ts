@@ -13,7 +13,9 @@ import { RegistationComponent } from './registation/registation.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { UserEditorComponent } from './user-editor/user-editor.component';
+import { MypostComponent } from './mypost/mypost.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { MyPostsComponent } from './my-posts/my-posts.component';
     NavbarComponent,
     AddPostComponent,
     UserEditorComponent,
-    MyPostsComponent
+    MypostComponent,
+    MyPostsComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

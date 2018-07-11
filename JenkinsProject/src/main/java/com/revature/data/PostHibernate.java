@@ -40,6 +40,7 @@ public class PostHibernate implements PostDAO, HibernateSession {
 
 	@Override
 	public Post getPost(int id) {
+
 		// get a session
 		Session s = hu.getSession();
 		// get a post from the session
@@ -47,6 +48,7 @@ public class PostHibernate implements PostDAO, HibernateSession {
 		// close the resource
 		s.close();
 		// return the post
+
 		return p;
 	}
 
