@@ -11,6 +11,7 @@ import { MyPostsComponent } from '../my-posts/my-posts.component';
 
 const routes = [
   {
+    path: '',
     redirectTo: '/login',
     pathMatch: 'full'
   },

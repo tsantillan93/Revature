@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,7 +40,7 @@ public class HomeController
         }
         
         @RequestMapping(value = "/updateUser", method = RequestMethod.PUT)
-        public User updateUserInfo(User u) 
+        public User updateUserInfo(@RequestBody User u) 
         {
         	homeService.updateUserInfo(u);
         	return u;
