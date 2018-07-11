@@ -7,7 +7,6 @@ import com.revature.beans.User;
 
 public interface HomeService 
 {
-	public Set<Post> getAllPosts();
 	public void viewUserInfo(User u);
 	public void updateUserInfo (User u);
 }

@@ -11,6 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegistationComponent } from './registation/registation.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AddPostComponent } from './add-post/add-post.component';
+import { UserEditorComponent } from './user-editor/user-editor.component';
+import { MyPostsComponent } from './my-posts/my-posts.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     RegistationComponent,
     HomeComponent,
     NavbarComponent,
-
+    AddPostComponent,
+    UserEditorComponent,
+    MyPostsComponent
   ],
   imports: [
     BrowserModule,

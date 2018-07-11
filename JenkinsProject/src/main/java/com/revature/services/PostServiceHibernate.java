@@ -32,21 +32,19 @@ public class PostServiceHibernate implements PostService {
 	}
 
 	@Override
-	public void updatePost(Post Post) {
-		// TODO Auto-generated method stub
+	public Post updatePost(Post post) {
+		return pd.updatePost(post);
 		
 	}
 
 	@Override
 	public Set<Post> getPosts() {
-		// TODO Auto-generated method stub
-		return null;
+		return pd.getPosts();
 	}
 
 	@Override
 	public Set<Post> getMyPosts(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		return pd.getMyPosts(user);
 	}
 
 }
