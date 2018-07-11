@@ -9,6 +9,7 @@ import { AddPostComponent } from 'src/app/add-post/add-post.component';
 import {MypostComponent} from 'src/app/mypost/mypost.component';
 import { LoginComponent} from '../login/login.component';
 import { MyPostsComponent } from '../my-posts/my-posts.component';
+import { PostComponent } from '../post/post.component';
 
 const routes = [
   {
@@ -37,8 +38,8 @@ const routes = [
     component: AddPostComponent
   },
   {
-    path: 'mypost',
-    component: MypostComponent
+    path: 'post/:id',
+    component: PostComponent
   },
   {
     path: 'mypost/:id',
