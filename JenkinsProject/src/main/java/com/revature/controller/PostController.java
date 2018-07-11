@@ -22,16 +22,19 @@ import com.revature.services.PostService;
 public class PostController {
 	@Autowired
 	private PostService postService;
+
 	private UserDAO ud = new UserHibernate();;
     @RequestMapping(value = "/post", method = RequestMethod.POST) //maps POST requests to this function
 	public Post addPost(@RequestBody Post post) {
 		return postService.addPost(post);
 	}
 	
-    @RequestMapping(value = "/post", method = RequestMethod.GET) //maps GET requests to this function
+    @RequestMapping(value = "/post/{id}", method = RequestMethod.GET) //maps GET requests to this function
     @ResponseBody
-	public Post getPost() {
-		return null;
+	public Post getPost(@PathVariable int id) {
+
+    		Post p = postService.getPost(id);
+		return p;
 	}
 	
     @RequestMapping(value = "/getPosts", method = RequestMethod.GET) //maps GET requests to this function

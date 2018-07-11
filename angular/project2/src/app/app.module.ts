@@ -14,6 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { UserEditorComponent } from './user-editor/user-editor.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
+
 @NgModule({
   declarations: [
     AppComponent,

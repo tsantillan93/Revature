@@ -30,9 +30,14 @@ export class PostService {
       );
   }
 
-  get() {
-
+  get(id: number): Observable<Post> {
+    const url: string = this.appUrl + '/' + id;
+    return this.http.get(url, {withCredentials: true }).pipe(
+      map(resp => resp as Post)
+    );
   }
+
+
 
   update() {
 
