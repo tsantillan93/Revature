@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 import { Post } from '../post';
 import { PostService} from 'src/app/post.service';
 import { enableDebugTools } from '../../../node_modules/@angular/platform-browser';
+import { Form, FormGroup, FormControl } from '../../../node_modules/@angular/forms';
 @Component({
   selector: 'app-mypost',
   templateUrl: './mypost.component.html',
@@ -16,10 +17,7 @@ import { enableDebugTools } from '../../../node_modules/@angular/platform-browse
 export class MypostComponent implements OnInit {
 
   @Input() openPost: Post;
-  private title: string;
-  private id: string;
-  private price: number;
-  private description: string;
+  private myform: FormGroup;
 
   constructor(
     private postService: PostService,
@@ -50,16 +48,14 @@ export class MypostComponent implements OnInit {
       },
       error => {
         alert('Something went wrong');
-        // this.router.navigate(['/']);
       });
   }
    enable(): void {
-     console.log('hello world');
-     
-     document.getElementById('title').disabled = false;
-     document.getElementById('description').disabled = false;
-     document.getElementById('price').disabled = false;
-     document.getElementById('edit').style.opacity = 0;
+     console.log('Edditing Your Post');
+    //  document.getElementById('title').disabled = false;
+    //  document.getElementById('description').disabled = false;
+    //  document.getElementById('price').disabled = false;
+    //  document.getElementById('edit').style.opacity = 0;
 
    }
 }
