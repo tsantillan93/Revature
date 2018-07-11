@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 
 import { Post } from '../post';
-import { first } from '../../../node_modules/rxjs/operators';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,14 +11,15 @@ import { first } from '../../../node_modules/rxjs/operators';
 })
 export class HomeComponent implements OnInit {
   public posts: Post[];
-  width  = 600;
-  height = 400;
-  type = 'column2d';
-  dataFormat = 'json';
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService, private router: Router) { }
 
   ngOnInit() {
     this.postService.getPosts().subscribe(resp => this.posts = resp);
+  }
+
+  getMyPosts()
+  {
+    this.router.navigate(['/myPosts']);
   }
 }
