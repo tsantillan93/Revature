@@ -42,7 +42,7 @@ export class PostComponent implements OnInit {
       pipe(first()).subscribe(
         post => {
           this.selectedPost = post;
-          this.setDistance();
+          this.setDistance(this.lat, this.long, post.latitude, post.longitude);
         },
         error => {
           alert('Something went Wrong!');
@@ -78,6 +78,10 @@ export class PostComponent implements OnInit {
 
   placeBid() {
     if (this.bidForm.controls.bid.value > this.selectedPost.price) {
+      if (this.userService.getUser() === this.selectedPost.owner) {
+        alert('Cant bid on your own');
+        return;
+      }
       this.bid = new Bid();
       this.bid.id = 0;
       this.bid.post = this.selectedPost.id;
@@ -117,16 +121,21 @@ export class PostComponent implements OnInit {
     }
   }
 
-  setDistance() {
-    this.lat = this.getRandomInRange(39.5, 39.7);
-    this.long = this.getRandomInRange(-80, -79.8);
-
-    console.log(this.lat + ' ' + this.long);
-    this.distance = Math.sqrt(Math.pow((this.lat - this.selectedPost.latitude), 2) + Math.pow((this.long - this.selectedPost.longitude), 2));
+  setDistance(lat1, lon1, lat2, lon2) {
+    const R = 3960; // Radius of the earth in miles
+    const dLat = this.deg2rad(lat2 - lat1);  // deg2rad below
+    const dLon = this.deg2rad(lon2 - lon1);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2)
+      ;
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    this.distance = R * c; // Distance in km
+    this.distance.toFixed(2);
   }
 
-  getRandomInRange(from, to) {
-    return (Math.random() * (to - from) + from).toFixed(6) * 1;
-    // .toFixed() returns string, so ' * 1' is a trick to convert to number
+  deg2rad(deg) {
+    return deg * (Math.PI / 180);
   }
 }
