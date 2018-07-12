@@ -24,7 +24,9 @@ export class MyPostsComponent implements OnInit {
   {
     this.router.navigate(['/home']);
   }
-
+  viewmyPost(id: number) {
+    this.router.navigate(['mypost/' + id]);
+  }
   public highlightRow(p) {
     this.selectedPost = p.title;
   }
