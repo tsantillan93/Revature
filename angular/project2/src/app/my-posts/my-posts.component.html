@@ -11,7 +11,7 @@
               <th>Start Date</th> 
               <th>End Date</th>
             </tr>
-          <tr *ngFor="let p of myPosts" (mouseover)="highlightRow(p)" [ngClass] = "{'highlight' : p.title == selectedPost}">
+          <tr *ngFor="let p of myPosts" (click) ="viewmyPost(p.id)" (mouseover)="highlightRow(p)" [ngClass] = "{'highlight' : p.title == selectedPost}">
             <td> {{p.id}}</td>
             <td>{{p.title}}</td>
             <td>{{p.description}}</td>

@@ -50,15 +50,4 @@ export class MypostComponent implements OnInit {
         alert('Something went wrong');
       });
   }
-   enable(): void {
-
-     console.log('Edditing Your Post');
-
-
-    //  document.getElementById('title').disabled = false;
-    //  document.getElementById('description').disabled = false;
-    //  document.getElementById('price').disabled = false;
-    //  document.getElementById('edit').style.opacity = 0;
-
-   }
 }
