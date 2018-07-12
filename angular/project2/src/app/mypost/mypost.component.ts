@@ -51,7 +51,10 @@ export class MypostComponent implements OnInit {
       });
   }
    enable(): void {
+
      console.log('Edditing Your Post');
+
+
     //  document.getElementById('title').disabled = false;
     //  document.getElementById('description').disabled = false;
     //  document.getElementById('price').disabled = false;

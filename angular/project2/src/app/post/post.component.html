@@ -1,10 +1,23 @@
-<ng-container*ngIf="selectedPost">
+<ng-container *ngIf="selectedPost">
   <h2>{{selectedPost.title}}</h2>
-  <p>Posted by: {{selectedPost.owner.username}} on {{startDate}}</p>
-  <p>Ends: endDate</p>
+  <p>Post# {{selectedPost.id}}</p>
+  <p>Posted by: {{selectedPost.owner.username}} on {{selectedPost.startDate}}</p>
+  <p *ngIf="info">Ends: {{selectedPost.endDate}}</p>
   <p>Description:</p>
   <p>{{selectedPost.description}}</p>
+  <p *ngIf="!info; else bidinput">Selling Price: ${{selectedPost.price}}</p>
   <p>Location:</p>
   <p>Latitude: {{selectedPost.latitude}}, Longitude: {{selectedPost.longitude}}</p>
-  <p>Post# {{selectedPost.id}}</p>
 </ng-container>
+<ng-template #bidinput>
+    <form [formGroup]="bidForm" novalidate>
+      <label for="bid">Current Price: ${{selectedPost.price}}</label>
+      <input type="number" min="1" step="any" formControlName="bid"/>
+      <div *ngIf="bidForm.controls['bid'].errors" class="alert alert-danger">
+          <div *ngIf="bidForm.controls['bid'].errors.required">
+            Bid must be greater than current bid.
+          </div>
+        </div>
+      <button class="btn btn-primary" (click) = "placeBid()">Bid</button>
+    </form>
+</ng-template>
