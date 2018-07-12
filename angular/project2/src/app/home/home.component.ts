@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   public searchPostsArray: Post[];
   public searchBar: string;
   public maxPrice: number;
+  public selectedPost: string;
 
   constructor(private postService: PostService, private router: Router, private pipe: PostFilterPipe) { }
 
@@ -69,6 +70,10 @@ export class HomeComponent implements OnInit {
       this.posts = this.allPosts;
     }
       return this.posts;
+  }
+
+  public highlightRow(p) {
+    this.selectedPost = p.title;
   }
 
 }
