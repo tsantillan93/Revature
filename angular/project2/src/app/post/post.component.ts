@@ -21,6 +21,10 @@ export class PostComponent implements OnInit {
   private bidForm: FormGroup;
   private info: BidInfo;
   private bid: Bid;
+  private lat = 39.636630;
+  private long = -79.954601;
+  private distance: number;
+
   constructor(
     private postService: PostService,
     private userService: UserserviceService,
@@ -32,10 +36,19 @@ export class PostComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-
     if (id) {
-      this.postService.get(id).subscribe(
-          post => this.selectedPost = post);
+
+      this.postService.get(id).
+      pipe(first()).subscribe(
+        post => {
+          this.selectedPost = post;
+          this.setDistance();
+        },
+        error => {
+          alert('Something went Wrong!');
+          this.router.navigate(['/home']);
+        }
+      );
 
       this.postService.getInfo(id).
         pipe(first()).subscribe(
@@ -64,27 +77,56 @@ export class PostComponent implements OnInit {
   }
 
   placeBid() {
-    this.bid = new Bid();
-    this.bid.id = 0;
-    this.bid.post = this.selectedPost.id;
-    this.bid.user = this.userService.getUser();
-    // this.bid.amount =
+    if (this.bidForm.controls.bid.value > this.selectedPost.price) {
+      this.bid = new Bid();
+      this.bid.id = 0;
+      this.bid.post = this.selectedPost.id;
+      console.log(this.userService.getUser());
+      this.bid.user = this.userService.getUser();
+      this.bid.amount = this.bidForm.controls.bid.value;
 
-    this.bidService.add(this.bid).
-    pipe(first()).subscribe(
-      bid => {
-        this.info.maxBid = bid;
-        this.postService.updateInfo(this.info);
-        this.selectedPost.price = bid.amount;
-        this.postService.update(this.selectedPost);
-        this.router.navigate(['/post/' + this.route.snapshot.paramMap.get('id')]);
-      },
-      error => {
-        alert('Something went Wrong!');
-        this.router.navigate(['/home']);
-      }
-    );
+      this.bidService.add(this.bid).
+      pipe(first()).subscribe(
+        bid => {
+          this.info.maxBid = bid;
+          this.postService.updateInfo(this.info).
+          pipe(first()).subscribe(
+            data => {
+              this.selectedPost.price = bid.amount;
+              this.postService.update(this.selectedPost).
+              pipe(first()).subscribe(
+                  data2 => {
+                    alert('Successfully updated');
+                    this.router.navigate(['/post/' + this.route.snapshot.paramMap.get('id')]);
+                  },
+                  error => {
+                    alert('Something went wrong in post');
+                  });
+          },
+            error => {
+              alert('Something went wrong in info');
+            });
+        },
+        error => {
+          alert('Something went Wrong in bid');
+          // this.router.navigate(['/home']);
+        }
+      );
+    } else {
+      alert('Bid must be greater than current value');
+    }
   }
 
+  setDistance() {
+    this.lat = this.getRandomInRange(39.5, 39.7);
+    this.long = this.getRandomInRange(-80, -79.8);
 
+    console.log(this.lat + ' ' + this.long);
+    this.distance = Math.sqrt(Math.pow((this.lat - this.selectedPost.latitude), 2) + Math.pow((this.long - this.selectedPost.longitude), 2));
+  }
+
+  getRandomInRange(from, to) {
+    return (Math.random() * (to - from) + from).toFixed(6) * 1;
+    // .toFixed() returns string, so ' * 1' is a trick to convert to number
+  }
 }

@@ -78,17 +78,17 @@ public class PostController {
 		return myPosts;
 	}
 	
-    @RequestMapping(value = "/updatePost", method = RequestMethod.PUT) //maps PUT requests to this function
+    @RequestMapping(value = "/post", method = RequestMethod.PUT) //maps PUT requests to this function
     @ResponseBody
-	public Post updatePost(@RequestBody Post p) {//may need to use @PathVariable if we're gonna have the post id in the uri
-    	System.out.println(p.toString());
-    	 postService.updatePost(p);
-    	 return p;
+	public void updatePost(@RequestBody Post p) {//may need to use @PathVariable if we're gonna have the post id in the uri
+    	System.out.println(p);
+    	postService.updatePost(p);
 	}
     
     @RequestMapping(value = "/bidInfo", method = RequestMethod.PUT) //maps PUT requests to this function
     @ResponseBody
 	public void updateBidInfo(@RequestBody BidInfo info) {//may need to use @PathVariable if we're gonna have the post id in the uri
+    	System.out.println(info);
     	infoService.updateBidInfo(info);
 	}
 

@@ -12,7 +12,8 @@ import { Router } from '../../../node_modules/@angular/router';
 })
 export class MyPostsComponent implements OnInit {
   public myPosts: Post[];
-
+  public selectedPost: string;
+  
   constructor(private postService: PostService, private router: Router) { }
 
   ngOnInit() {
@@ -22,5 +23,9 @@ export class MyPostsComponent implements OnInit {
   getAllPosts()
   {
     this.router.navigate(['/home']);
+  }
+
+  public highlightRow(p) {
+    this.selectedPost = p.title;
   }
 }

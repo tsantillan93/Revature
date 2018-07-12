@@ -3,9 +3,12 @@ package com.revature.beans;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +16,8 @@ import javax.persistence.Table;
 public class Bid {
 	@Id
 	@Column(name="BID_ID")
+	@SequenceGenerator(name="BIDID_SEQ", sequenceName="BIDID_SEQ",allocationSize = 1)
+	@GeneratedValue(generator="BIDID_SEQ", strategy=GenerationType.SEQUENCE)
 	private int id;
 	@Column(name="POST_ID")
 	private int post;
