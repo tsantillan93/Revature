@@ -21,6 +21,8 @@
 		<!-- JPA Annotations -->
 		<mapping class="com.revature.beans.User"></mapping>
 		<mapping class="com.revature.beans.Post"></mapping>
+		<mapping class="com.revature.beans.Bid"></mapping>
+		<mapping class="com.revature.beans.BidInfo"></mapping>
 
 	</session-factory>
 </hibernate-configuration>
