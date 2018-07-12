@@ -11,10 +11,10 @@ export class BidService {
   private appUrl = 'http://localhost:8080/JenkinsProject/';
   constructor(private http: HttpClient) { }
 
-  add(bid: Bid) {
+  add(bid: Bid):  Observable<Bid> {
     console.log(bid);
     const body = bid;
-    return this.http.post(this.appUrl + 'post', body,
+    return this.http.post(this.appUrl + 'bid', body,
       { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin' : 'localhost:4200' }),
         withCredentials: true }).pipe(
         map(resp => bid = resp as Bid)
