@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
-
 import { Post } from '../post';
 import { Router } from '../../../node_modules/@angular/router';
 import { PostFilterPipe } from '../post-filter.pipe';
 import { Observable } from '../../../node_modules/rxjs';
+import { UserserviceService } from '../userservice.service';
 
 @Component({
   selector: 'app-home',
@@ -21,9 +21,16 @@ export class HomeComponent implements OnInit {
   public maxPrice: number;
   public selectedPost: string;
 
-  constructor(private postService: PostService, private router: Router, private pipe: PostFilterPipe) { }
+  constructor(
+    private postService: PostService,
+    private userService: UserserviceService,
+    private router: Router,
+    private pipe: PostFilterPipe) { }
 
   ngOnInit() {
+    if (!this.userService.getUser()) {
+      this.router.navigate(['/login']);
+    }
     this.postService.getPosts().subscribe(resp => this.posts = resp);
     this.postService.getPosts().subscribe(resp => this.allPosts = resp);
     this.searchBar = '';

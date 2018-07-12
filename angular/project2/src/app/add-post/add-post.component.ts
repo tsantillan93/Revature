@@ -15,8 +15,6 @@ export class AddPostComponent implements OnInit {
   registrationForm: FormGroup;
   private post: Post;
   private info: BidInfo;
-  private latitude: number;
-  private longitude: number;
   private isBidPost = false;
   private submitted = false;
   constructor(private userService: UserserviceService, private postService: PostService,
@@ -46,8 +44,8 @@ export class AddPostComponent implements OnInit {
     this.post.startDate = this.registrationForm.controls.startDate.value;
     this.post.endDate = this.registrationForm.controls.endDate.value;
     this.post.description = this.registrationForm.controls.description.value;
-    this.post.latitude = this.latitude;
-    this.post.longitude = this.longitude;
+    this.post.latitude = this.getRandomInRange(39.5, 39.7);
+    this.post.longitude = this.getRandomInRange(-80, -79.8);
     this.post.price = this.registrationForm.controls.price.value;
 
     this.postService.add(this.post).subscribe(
@@ -67,8 +65,8 @@ export class AddPostComponent implements OnInit {
     this.post.startDate = this.registrationForm.controls.startDate.value;
     this.post.endDate = this.registrationForm.controls.endDate.value;
     this.post.description = this.registrationForm.controls.description.value;
-    this.post.latitude = this.latitude;
-    this.post.longitude = this.longitude;
+    this.post.latitude = this.getRandomInRange(39.5, 39.7);
+    this.post.longitude = this.getRandomInRange(-80, -79.8);
     this.post.price = this.registrationForm.controls.price.value;
 
     this.postService.add(this.post).
@@ -99,6 +97,11 @@ export class AddPostComponent implements OnInit {
 
   isBid() {
     this.isBidPost = !this.isBidPost;
+  }
+
+  getRandomInRange(from, to) {
+    return (Math.random() * (to - from) + from).toFixed(6) * 1;
+    // .toFixed() returns string, so ' * 1' is a trick to convert to number
   }
 
 }

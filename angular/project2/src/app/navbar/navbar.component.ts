@@ -10,7 +10,7 @@ import { User } from 'src/app/user';
 })
 export class NavbarComponent implements OnInit {
 
-  title = 'Test Navbar';
+  title = 'EList';
   private user: User;
   constructor(
     private userService: UserserviceService, private router: Router
@@ -31,6 +31,9 @@ export class NavbarComponent implements OnInit {
     );
   }
 
+  home() {
+    this.router.navigate(['home']);
+  }
   addPost() {
     this.router.navigate(['addPost']);
   }
