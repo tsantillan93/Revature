@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserserviceService } from 'src/app/userservice.service';
-
+import { User } from 'src/app/user';
 
 @Component({
   selector: 'app-navbar',
@@ -10,15 +10,17 @@ import { UserserviceService } from 'src/app/userservice.service';
 })
 export class NavbarComponent implements OnInit {
 
-  title = 'Test Navbar';
+  title = 'EList';
+  private user: User;
   constructor(
     private userService: UserserviceService, private router: Router
   ) { }
 
   ngOnInit() {
   }
+
   getEditUser(): void {
-    console.log('edittting');
+    this.router.navigate(['editUser']);
   }
   logout(): void {
     console.log('logging out');
@@ -27,5 +29,12 @@ export class NavbarComponent implements OnInit {
         this.router.navigate(['/login']);
       }
     );
+  }
+
+  home() {
+    this.router.navigate(['home']);
+  }
+  addPost() {
+    this.router.navigate(['addPost']);
   }
 }

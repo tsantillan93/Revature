@@ -14,39 +14,38 @@ public class PostServiceHibernate implements PostService {
 	private PostDAO pd= new PostHibernate();
 
 	@Override
-	public Post addPost(Post post) {
-		// TODO Auto-generated method stub
-		return null;
+	public  Post addPost(Post post) {
+		//log.trace("Adding book to db");
+		return pd.addPost(post);
 	}
 
 	@Override
 	public Post getPost(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Post post = pd.getPost(id);
+		return post;
+
 	}
 
 	@Override
 	public Post getPost(Post post) {
-		// TODO Auto-generated method stub
-		return null;
+		Post functionPost = pd.getPost(post);
+		return functionPost;
 	}
 
 	@Override
-	public void updatePost(Post Post) {
-		// TODO Auto-generated method stub
+	public Post updatePost(Post post) {
+		return pd.updatePost(post);
 		
 	}
 
 	@Override
 	public Set<Post> getPosts() {
-		// TODO Auto-generated method stub
-		return null;
+		return pd.getPosts();
 	}
 
 	@Override
 	public Set<Post> getMyPosts(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		return pd.getMyPosts(user);
 	}
 
 }

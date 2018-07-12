@@ -1,35 +1,44 @@
-<ng-template>
-  <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-  
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Edit User Information</h4>
-        </div>
-        <div class="modal-body">
-          <ul class="form-group">
-            <li>
-              <label for="fname">First Name:</label>
-              <input type="text" [(ngModel)]="firstName" class="form-control" id="fname"></input>
-            </li>
-            <li>
-                <label for="lname">Last Name:</label>
-                <input type="text" [(ngModel)]="lastName" class="form-control" id="lname"></input>
-            </li>
-            <li>
-                <label for="email">Email Address:</label>
-                <input type="email" [(ngModel)]="emailAddress" class="form-control" id="email"></input>
-            </li>
-          </ul>
-        </div>
-        <div class="modal-footer">
-          <!-- TODO: Change button functionality to submit changes instead of exit modal -->
-          <button type="submit" class="btn btn-default" data-dismiss="modal">Save Changes</button>
-        </div>
-      </div>
-  
+<ng-container>
+  <h2>Edit User Info</h2>
+  <form [formGroup]="registrationForm" novalidate>
+    <div>
+      <label for="firstName">First Name:</label>
+      <input type="text" formControlName="firstName"/>
     </div>
-  </div>
-</ng-template>
+    <div *ngIf="submitted && registrationForm.controls['firstName'].errors" class="alert alert-danger">
+      <div *ngIf="registrationForm.controls['firstName'].errors.required">
+        First Name is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input type="text" formControlName="lastName"/>
+    </div>
+    <div *ngIf="submitted && registrationForm.controls['lastName'].errors" class="alert alert-danger">
+      <div *ngIf="registrationForm.controls['lastName'].errors.required">
+        Last Name is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="email">Email Address:</label>
+      <input type="email" formControlName="email"/>
+    </div>
+    <div *ngIf="submitted && registrationForm.controls['email'].errors" class="alert alert-danger">
+      <div *ngIf="registrationForm.controls['email'].errors.required">
+        Email Address is required.
+      </div>
+      <div *ngIf="registrationForm.controls['email'].errors.email">
+        Email Address must be a valid email address.
+      </div>
+    </div>
+
+    <div>
+      <button [disabled]="loading" class="btn btn-primary" (click) = "edit()">Update</button>
+      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+        <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+    </div>
+
+  </form>
+</ng-container>

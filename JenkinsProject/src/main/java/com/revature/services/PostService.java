@@ -9,7 +9,7 @@ public interface PostService {
 	Post addPost(Post post);
 	Post getPost(int id);
 	Post getPost(Post post);
-	void updatePost(Post Post);
+	Post updatePost(Post post);
 	Set<Post> getPosts();
 	Set<Post> getMyPosts(User user);
 
