@@ -6,12 +6,11 @@
   <p>Description:</p>
   <p>{{selectedPost.description}}</p>
   <p *ngIf="!info; else bidinput">Selling Price: ${{selectedPost.price}}</p>
-  <p>Location:</p>
-  <p>Distance:{{distance}}</p>
+  <p>Distance: {{distance.toFixed(2)}} miles away</p>
 </ng-container>
 <ng-template #bidinput>
     <form [formGroup]="bidForm" novalidate>
-      <label for="bid">Current Price: $</label>
+      <label for="bid">Current Price: $</label>&nbsp;
       <input type="number" min="1" step="any" formControlName="bid"/>
       <div *ngIf="bidForm.controls['bid'].errors" class="alert alert-danger">
           <div *ngIf="bidForm.controls['bid'].errors.required">
@@ -19,6 +18,6 @@
           </div>
         </div>
       <button class="btn btn-primary" (click) = "placeBid()">Bid</button>
-      <label>Winnng bid by: {{info.maxBid.user.username}}</label>
+      <label *ngIf="info.maxBid" >Winnng bid by: {{info.maxBid.user.username}}</label>
     </form>
 </ng-template>

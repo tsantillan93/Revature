@@ -18,9 +18,12 @@ export class UserserviceService {
   private user: User;
 
   constructor(private http: HttpClient) { }
-getUser(): User {
-  return this.user;
-}
+  getUser(): User {
+    if (!this.user) {
+      this.login(null, null);
+    }
+    return this.user;
+  }
 
   login(username: string, password: string): Observable<User> {
     if (username && password) {
