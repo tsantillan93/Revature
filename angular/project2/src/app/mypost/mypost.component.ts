@@ -45,10 +45,10 @@ export class MypostComponent implements OnInit {
   }
    enable(): void {
      console.log('hello world');
-     document.getElementById('title').disabled = false;
-     document.getElementById('description').disabled = false;
-     document.getElementById('price').disabled = false;
-     document.getElementById('edit').style.opacity = 0;
+    //  document.getElementById('title').disabled = false;
+    //  document.getElementById('description').disabled = false;
+    //  document.getElementById('price').disabled = false;
+    //  document.getElementById('edit').style.opacity = 0;
 
    }
 }
