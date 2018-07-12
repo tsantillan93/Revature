@@ -31,8 +31,14 @@ public class PostTester  {
 	{ o = new PostHibernate(); }
 	User testuser = new User(1, "test", "test", "Testing", "Testing2", "test@email.com");
 	Post postTesting = new Post(0, "JUnit", testuser, null, null, "Selling a JUnit Test", 0, 0, 24.99);
-
-/*	@Test
+	
+	@Test
+	public void Testgetpost() {
+		PostHibernate o = (PostHibernate) this.o;
+		Post gotpost = o.getPost(41);
+		assertEquals("anything", gotpost.getTitle());
+	}
+	@Test
 	public void addposttest() {
 		PostHibernate o = (PostHibernate) this.o;
 		Post testpost=o.addPost(postTesting);
@@ -47,19 +53,22 @@ public class PostTester  {
 		postTesting.setTitle("cool Junit");
 		o.updatePost(postTesting);
 		assertEquals("cool Junit",o.getPost(44).getTitle());
-	}*/
+	}
 	
 	@Test
-	public void testfailure() {
+	public void testincorrectInformation() {
 		PostHibernate o = (PostHibernate) this.o;
 		Post gotpost = o.getPost(22);
 		assertThat("RANDOM STUFF", not(gotpost.getTitle()));
 	}
 	@Test
-	public void getaUser() {
+	public void testGetPosts() {
 		PostHibernate o = (PostHibernate) this.o;
-		Post gotpost = o.getPost(41);
-		assertEquals("anything", gotpost.getTitle());
+		assertThat(null, not(o.getPosts()));
+	}
+	@Test
+	public void TestGetuseridfrompost() {
+		PostHibernate o = (PostHibernate) this.o;
 		assertEquals(testuser.getId(),o.getPost(44).getOwner().getId());
 	}	
 	
