@@ -16,6 +16,7 @@ import { UserEditorComponent } from './user-editor/user-editor.component';
 import { MypostComponent } from './mypost/mypost.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
 import { PostComponent } from './post/post.component';
+import { PostFilterPipe } from './post-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PostComponent } from './post/post.component';
     UserEditorComponent,
     MypostComponent,
     MyPostsComponent,
-    PostComponent
+    PostComponent,
+    PostFilterPipe
   ],
   imports: [
     BrowserModule,

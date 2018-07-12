@@ -2,6 +2,11 @@
   <br>
   <button (click)="getMyPosts()">View My Posts</button>
   <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search By Title/Description: <input class = "well" [(ngModel)]="searchBar" type="text" (keyup)="searchAndFilterPosts()">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<input type="number" min="5" max="1000000000000" step="1" placeholder="Max Price" [(ngModel)]="maxPrice" (keyup)="searchAndFilterPosts()">
+  <br>
+  <!-- $<input type="number" min="5" max="1000000000000" step="1" placeholder="Max Price"> -->
+  <br>
     <table>
         <tr>
             <th>ID</th>
@@ -10,16 +15,14 @@
             <th>Price</th>
             <th>Start Date</th> 
             <th>End Date</th>
-          </tr>
+        </tr>
         <tr *ngFor="let p of posts"  (click) ="viewPost(p.id)">
-         
             <td> {{p.id}}</td>
             <td>{{p.title}}</td>
             <td>{{p.description}}</td>
             <td>${{p.price}}</td>
             <td>{{p.startDate}}</td>
             <td>{{p.endDate}}</td>
-
         </tr>
       </table>
 </ng-container>
