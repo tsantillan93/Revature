@@ -1,5 +1,6 @@
-<ng-container *ngIf="openPost">  
-    <ul class="form-group">
+    <body>
+<ng-container *ngIf="openPost"> 
+    <ul class="form-group" id="list">
       <li>
           <label for="id"> Id:</label>
           <input type="text" [attr.disabled]="disabled ? true : false" [value]="openPost.id" class="form-control" id="id">
@@ -17,7 +18,9 @@
           <input type="number"  [(ngModel)]="openPost.price" class="form-control" id="price" > 
       </li>
     </ul>
-  <!-- <button (click)="enable()" id="edit"> editbutton</button> -->
-  <button (click)="edit()" id="submit"> submit</button>
-  <button [routerLink]="['/myPosts']" class="btn btn-link">Cancel</button>
+    <div>
+        <button (click)="edit()" id="submit" class="btn btn-link" > submit</button>
+         <button [routerLink]="['/myPosts']" class="btn btn-link">Cancel</button>
+    </div>
 </ng-container> 
+</body>
