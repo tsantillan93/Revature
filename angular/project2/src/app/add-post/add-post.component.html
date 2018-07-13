@@ -1,3 +1,4 @@
+<body>
 <ng-container>
     <h2>New Post</h2>
     <div>
@@ -6,7 +7,7 @@
     </div>
     <form [formGroup]="registrationForm" novalidate>
       <div>
-        <label for="title">Title:</label>
+        <label for="title">Title:</label><br>
         <input type="text" formControlName="title"/>
       </div>
       <div *ngIf="submitted && registrationForm.controls['title'].errors" class="alert alert-danger">
@@ -26,7 +27,7 @@
         </div>
   
       <div>
-        <label *ngIf="!isBidPost; else bidAmount" for="price">Price:</label>
+        <label *ngIf="!isBidPost; else bidAmount" for="price">Price:</label><br>
         <input type="number" min="1" step="any" formControlName="price"/>
       </div>
       <div *ngIf="submitted && registrationForm.controls['price'].errors" class="alert alert-danger">
@@ -72,3 +73,4 @@
   <ng-template #bidSubmit>
       <button [disabled]="loading" class="btn btn-primary" (click) = "addBidPost()">Post</button>
   </ng-template>
+  </body>
