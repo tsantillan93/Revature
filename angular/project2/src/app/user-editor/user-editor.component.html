@@ -1,8 +1,9 @@
+<body>
 <ng-container>
   <h2>Edit User Info</h2>
   <form [formGroup]="registrationForm" novalidate>
     <div>
-      <label for="firstName">First Name:</label>
+      <label for="firstName"><strong>First Name:</strong></label>
       <input type="text" formControlName="firstName"/>
     </div>
     <div *ngIf="submitted && registrationForm.controls['firstName'].errors" class="alert alert-danger">
@@ -12,7 +13,7 @@
     </div>
 
     <div>
-      <label for="lastName">Last Name:</label>
+      <label for="lastName"><strong>Last Name:</strong></label>
       <input type="text" formControlName="lastName"/>
     </div>
     <div *ngIf="submitted && registrationForm.controls['lastName'].errors" class="alert alert-danger">
@@ -22,7 +23,7 @@
     </div>
 
     <div>
-      <label for="email">Email Address:</label>
+      <label for="email"><strong>Email Address:</strong></label>
       <input type="email" formControlName="email"/>
     </div>
     <div *ngIf="submitted && registrationForm.controls['email'].errors" class="alert alert-danger">
@@ -42,3 +43,4 @@
 
   </form>
 </ng-container>
+</body>
