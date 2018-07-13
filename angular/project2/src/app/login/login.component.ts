@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.user, this.pass).subscribe(
       user => {
         this.loggedUser = user;
-        // purchase stuff
+  
         if (this.loggedUser) {
           this.router.navigate(['/home']);
         }
