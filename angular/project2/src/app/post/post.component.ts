@@ -78,7 +78,7 @@ export class PostComponent implements OnInit {
 
   placeBid() {
     if (this.bidForm.controls.bid.value > this.selectedPost.price) {
-      if (this.userService.getUser() === this.selectedPost.owner) {
+      if (this.userService.getUser().id === this.selectedPost.owner.id) {
         alert('Cant bid on your own');
         return;
       }
